@@ -60,4 +60,9 @@ public class BoardMathHelpers {
   public static int numberOfDigits(int number) {
     return String.valueOf(number).length();
   }
+
+  public static int getDefaultBoardSize()
+  {
+      return DEFAULT_BOARD_SIZE;
+  }
 }

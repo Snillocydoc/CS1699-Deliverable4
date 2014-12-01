@@ -4,9 +4,14 @@ import java.util.InputMismatchException;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Stream;
+import java.io.*;
 
 public class TicTacToe {
-  public void play() {
+  private InputStream in;
+  private Scanner scanner;
+  public void play(InputStream in) {
+      this.in=in;
+      scanner=new Scanner(in);
     final GameState finishedGame = Stream
         .iterate(new GameState(), this::turn)
         .filter(GameState::isGameOver)
@@ -26,7 +31,7 @@ public class TicTacToe {
     System.out.print("Player " + gameState.getCurrentPlayer() + ", it's your turn, enter a number: ");
 
     try {
-      final int selection = new Scanner(System.in).nextInt();
+      final int selection = scanner.nextInt();
       return gameState.makeMove(selection);
     } catch (InputMismatchException e) {
       System.out.println();
@@ -42,6 +47,6 @@ public class TicTacToe {
   }
 
   public static void main(String[] args) {
-    new TicTacToe().play();
+    new TicTacToe().play(System.in);
   }
 }
