@@ -31,16 +31,20 @@ public class TicTacToe {
     System.out.print("Player " + gameState.getCurrentPlayer() + ", it's your turn, enter a number: ");
 
     try {
+
       final int selection = scanner.nextInt();
+
       return gameState.makeMove(selection);
     } catch (InputMismatchException e) {
       System.out.println();
       System.out.println("Error: you must enter a number.");
       System.out.println("Please try again!");
+      scanner.nextLine();
     } catch (IllegalMoveException e) {
       System.out.println();
       System.out.println("Error: " + e.getMessage());
       System.out.println("Please try again!");
+      scanner.nextLine();
     }
 
     return gameState;
