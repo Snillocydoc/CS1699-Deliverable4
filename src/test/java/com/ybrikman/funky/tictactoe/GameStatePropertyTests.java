@@ -16,25 +16,37 @@ import static org.junit.Assert.*;
  */
 @RunWith(Theories.class)
 public class GameStatePropertyTests {
-    @Test @Theory public void testMakeMove(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    @Test @Theory public void testMakeMovePlayerAlternation(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    {
+        GameState game=new GameState();
+        GameState before;
+        Player currentPlayer;
+       before=game;
+
+       //Each time a move is made, the current player should alternate
+       game = game.makeMove(move);
+       assertNotEquals(before.getCurrentPlayer(), game.getCurrentPlayer());
+
+
+
+    }
+    @Test @Theory public void testMakeMoveStateChange(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
     {
         GameState game=new GameState();
         GameState before;
 
-       before=game;
-       if(game.getCurrentPlayer()==Player.O) {
-           game = game.makeMove(move);
-           assertEquals(game.getCurrentPlayer(),Player.X);
-       }else{
-           game=game.makeMove(move);
-           assertEquals(game.getCurrentPlayer(),Player.O);
-       }
-       //After making a single move, the game should not be equal to its previous state
-       assertNotEquals(before,game);
-       //After making a single move, the game should not be over
-       assertFalse(game.isGameOver());
-       //After making a single move, the should not have a winner
-       assertEquals(game.findWinner(), Optional.empty());
+        before=game;
+        game=game.makeMove(move);
+        //After making a single move, the game should not be equal to its previous state
+        assertNotEquals(before,game);
+
+    }
+    @Test @Theory public void testMakeMoveWinner(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    {
+        GameState game=new GameState();
+        game=game.makeMove(move);
+        //After making a single move, there should not be a winner yet
+        assertEquals(game.findWinner(), Optional.empty());
 
     }
     @Test @Theory public void testIsGameOver()
@@ -46,13 +58,20 @@ public class GameStatePropertyTests {
         assertTrue(state.isGameOver());
 
     }
-    @Test @Theory public void testFindWinner()
+    @Test @Theory public void testFindWinnerNotPresentProperty()
     {
         GameState state = new GameState();
+        //game does not complete, so a winner should not be present
+        assertFalse(state.findWinner().isPresent());
+
+    }
+    @Test @Theory public void testFindWinnerPresentProperty()
+    {
+        GameState state = new GameState();
+        //complete game with a winner, so a winner should be present
         for(int x=0;x<8;x++)
             state=state.makeMove(x);
         assertTrue(state.findWinner().isPresent());
-        assertEquals( state.findWinner().get(),Player.X);
     }
 
 }
