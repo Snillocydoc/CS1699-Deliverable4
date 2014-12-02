@@ -16,9 +16,9 @@ import static org.junit.Assume.assumeThat;
  * Created by cody on 11/28/14.
  */
 @RunWith(Theories.class)
-public class BoardMathHelperTests
+public class BoardMathHelperPropertyTests
 {
-
+    //Tests that every return value of this function has greater than 0 digits
     @Test @Theory public void testNumberOfDigits(@ForAll int num)
     {
         assumeThat(num ,any(Integer.TYPE));
@@ -26,7 +26,7 @@ public class BoardMathHelperTests
         assertTrue(digits>0);
 
     }
-    @Test @Theory public void testIsPerfectSquare(@ForAll int num)
+    @Test @Theory public void testIsPerfectSquare(@ForAll Integer num)
     {
         assumeThat(num,any(Integer.TYPE));
         boolean ans=BoardMathHelpers.isPerfectSquare(num);

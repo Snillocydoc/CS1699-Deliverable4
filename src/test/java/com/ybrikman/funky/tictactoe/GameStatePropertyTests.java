@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * Created by cody on 11/30/14.
  */
 @RunWith(Theories.class)
-public class GameStateTests {
+public class GameStatePropertyTests {
     @Test @Theory public void testMakeMove(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
     {
         GameState game=new GameState();
