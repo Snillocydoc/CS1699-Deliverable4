@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import static org.hamcrest.Matchers.any;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeThat;
@@ -44,9 +45,16 @@ public class BoardMathHelperPropertyTests
        assertTrue(board.size()==BoardMathHelpers.getDefaultBoardSize());
 
     }
-    @Test @Theory public void testCalculateWinningRowIndices()
+    @Test @Theory public void testCalculateWinningRowIndicesSizes()
     {
-        List<List<Integer>> indices = BoardMathHelpers.calculateWinningRowIndices(BoardMathHelpers.getDefaultBoardSize(),(int)Math.sqrt(BoardMathHelpers.getDefaultBoardSize()));
+        int rowSize=3;
+        List<List<Integer>> indices = BoardMathHelpers.calculateWinningRowIndices(rowSize*rowSize,rowSize);
+
+        //Each list of winning indices should be the length of rowSize
+        for(List<Integer> index : indices) {
+            assertEquals(index.size(), rowSize);
+        }
+
 
     }
 
