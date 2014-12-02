@@ -1,9 +1,14 @@
-# Funky Java Tic Tac Toe With Property-Based and Combinatorial Testing
+
 
 This repository includes property-based tests and combinatorial tests of a tic-tac-toe game written using the
 functional programming paradigm.  The original can be found here:
 
 https://github.com/brikis98/funky-java-tic-tac-toe
+
+Everything below this line was authored by the game's programmer in the above link.
+---------------------------------------------------------------------------------------------
+
+# Funky Java Tic Tac Toe With Property-Based and Combinatorial Testing
 
 This repository contains a text-based tic-tac-toe game written as a way to experiment with functional programming and
 persistent data structures in Java 8.
