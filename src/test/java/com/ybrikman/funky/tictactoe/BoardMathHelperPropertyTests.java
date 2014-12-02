@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.junit.Assume.*;
 /**
- * Created by cody on 11/28/14.
+ * Created by Cody Collins
  */
 @RunWith(Theories.class)
 public class BoardMathHelperPropertyTests

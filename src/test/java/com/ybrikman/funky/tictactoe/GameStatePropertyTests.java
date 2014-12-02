@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 /**
- * Created by cody on 11/30/14.
+ * Created by Cody Collins
  */
 @RunWith(Theories.class)
 public class GameStatePropertyTests {
