@@ -5,6 +5,9 @@ functional programming paradigm.  The original can be found here:
 
 https://github.com/brikis98/funky-java-tic-tac-toe
 
+Note: There were unit tests provided by the author to test some methods.  I deleted them in this repository
+to avoid confusion over which tests were mine.  This is solely for academic and grading purposes.
+
 Everything below this line was authored by the game's programmer in the above link.
 ---------------------------------------------------------------------------------------------
 
