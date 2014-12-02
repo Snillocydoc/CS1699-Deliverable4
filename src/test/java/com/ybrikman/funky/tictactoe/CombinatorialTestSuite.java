@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 
 /**
- * Created by cody on 11/29/14.
+ * Created by Cody Collins
  */
 
 public class CombinatorialTestSuite {

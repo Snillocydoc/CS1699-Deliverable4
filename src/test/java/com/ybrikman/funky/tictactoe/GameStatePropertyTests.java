@@ -16,12 +16,14 @@ import static org.junit.Assert.*;
  */
 @RunWith(Theories.class)
 public class GameStatePropertyTests {
+    /*
+     *  Tests whether the game alternates the current player after each move
+     */
     @Test @Theory public void testMakeMovePlayerAlternation(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
         GameState before;
-        Player currentPlayer;
-       before=game;
+        before=game;
 
        //Each time a move is made, the current player should alternate
        game = game.makeMove(move);
@@ -30,6 +32,9 @@ public class GameStatePropertyTests {
 
 
     }
+    /*
+     *  Tests whether a GameState object is the same as another after a move is made
+     */
     @Test @Theory public void testMakeMoveStateChange(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
@@ -41,6 +46,9 @@ public class GameStatePropertyTests {
         assertNotEquals(before,game);
 
     }
+    /*
+     *  Tests findWinner() after a single move is made
+     */
     @Test @Theory public void testMakeMoveWinner(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
@@ -49,6 +57,9 @@ public class GameStatePropertyTests {
         assertEquals(game.findWinner(), Optional.empty());
 
     }
+    /*
+     *  Tests whether a game is over after all the moves are made to win a game
+     */
     @Test @Theory public void testIsGameOver()
     {
         GameState state = new GameState();
@@ -58,6 +69,9 @@ public class GameStatePropertyTests {
         assertTrue(state.isGameOver());
 
     }
+    /*
+     *  Tests whether there is a winner present after no moves are made
+     */
     @Test @Theory public void testFindWinnerNotPresentProperty()
     {
         GameState state = new GameState();
@@ -65,6 +79,9 @@ public class GameStatePropertyTests {
         assertFalse(state.findWinner().isPresent());
 
     }
+    /*
+     *  Tests whether there is a winner present after winning moves are made
+     */
     @Test @Theory public void testFindWinnerPresentProperty()
     {
         GameState state = new GameState();
