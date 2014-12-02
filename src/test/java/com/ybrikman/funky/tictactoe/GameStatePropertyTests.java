@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(Theories.class)
 public class GameStatePropertyTests {
-    @Test @Theory public void testMakeMovePlayerAlternation(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    @Test @Theory public void testMakeMovePlayerAlternation(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
         GameState before;
@@ -30,7 +30,7 @@ public class GameStatePropertyTests {
 
 
     }
-    @Test @Theory public void testMakeMoveStateChange(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    @Test @Theory public void testMakeMoveStateChange(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
         GameState before;
@@ -41,7 +41,7 @@ public class GameStatePropertyTests {
         assertNotEquals(before,game);
 
     }
-    @Test @Theory public void testMakeMoveWinner(@ForAll @InRange(minInt=0, maxInt=8) int move,@ForAll @InRange(minInt=0, maxInt=8) int avail)
+    @Test @Theory public void testMakeMoveWinner(@ForAll @InRange(minInt=0, maxInt=8) int move)
     {
         GameState game=new GameState();
         game=game.makeMove(move);
